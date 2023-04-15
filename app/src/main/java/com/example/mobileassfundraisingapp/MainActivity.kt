@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.miHome -> replaceFragment(Home())
                 R.id.miProfile -> replaceFragment(profile())
                 R.id.miSettings -> replaceFragment(settings())
+                R.id.miSearch -> replaceFragment(search())
             }
             true
         }
