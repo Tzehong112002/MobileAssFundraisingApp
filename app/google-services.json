@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "932398042262",
+    "project_id": "mobileassfundraisingapp",
+    "storage_bucket": "mobileassfundraisingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932398042262:android:a7118cca5380a2b39d86b7",
+        "android_client_info": {
+          "package_name": "com.example.mobileassfundraisingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932398042262-nnkmm24qrmc1tb8pvhnpgkltfe3a93if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdT3ojuCSROIHegQEXvKiPVez3bwWjuEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932398042262-nnkmm24qrmc1tb8pvhnpgkltfe3a93if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
