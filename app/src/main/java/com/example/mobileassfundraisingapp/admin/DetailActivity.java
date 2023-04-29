@@ -27,6 +27,8 @@ public class DetailActivity extends AppCompatActivity {
     FloatingActionButton deleteButton, editButton;
     String key = "";
     String imageUrl = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,5 +66,17 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
+                        .putExtra("Title", detailTitle.getText().toString())
+                        .putExtra("Description", detailDesc.getText().toString())
+                        .putExtra("Language", detailLang.getText().toString())
+                        .putExtra("Image", imageUrl)
+                        .putExtra("Key", key);
+                startActivity(intent);
+            }
+        });
     }
 }
