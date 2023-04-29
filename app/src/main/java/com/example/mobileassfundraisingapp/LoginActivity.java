@@ -8,13 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.mobileassfundraisingapp.admin.adminActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
     EditText loginUsername, loginPassword;
     Button loginButton;
@@ -75,17 +77,35 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()){
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+
                     if (passwordFromDB.equals(userPassword)) {
                         loginUsername.setError(null);
+
+                        //pass the data using intent
                         String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
                         String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
                         String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("name", nameFromDB);
-                        intent.putExtra("email", emailFromDB);
-                        intent.putExtra("username", usernameFromDB);
-                        intent.putExtra("password", passwordFromDB);
-                        startActivity(intent);
+                        String roleFromDB = snapshot.child(userUsername).child("role").getValue(String.class);
+
+                        if (roleFromDB.equals("user")) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("name", nameFromDB);
+                            intent.putExtra("email", emailFromDB);
+                            intent.putExtra("username", usernameFromDB);
+                            intent.putExtra("password", passwordFromDB);
+                            intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+
+                        } else if (roleFromDB.equals("admin")) {
+                            Intent intent = new Intent(LoginActivity.this, adminActivity.class);
+                            intent.putExtra("name", nameFromDB);
+                            intent.putExtra("email", emailFromDB);
+                            intent.putExtra("username", usernameFromDB);
+                            intent.putExtra("password", passwordFromDB);
+                            intent = new Intent(LoginActivity.this, adminActivity.class);
+                            startActivity(intent);
+                        }
+
                     } else {
                         loginPassword.setError("Invalid Credentials");
                         loginPassword.requestFocus();
@@ -100,4 +120,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }

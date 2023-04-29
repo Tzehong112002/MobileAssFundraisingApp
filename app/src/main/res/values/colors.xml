@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="underline">#BDB8B8</color>
     <color name="lavender">#8692f7</color>
+    <color name="grey">#ff424242</color>
+    <color name="red">#c70000</color>
+    <color name="green">#00ff00</color>
 </resources>
