@@ -93,8 +93,10 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("email", emailFromDB);
                             intent.putExtra("username", usernameFromDB);
                             intent.putExtra("password", passwordFromDB);
-                            intent = new Intent(LoginActivity.this, MainActivity.class);
+
                             startActivity(intent);
+
+
 
                         } else if (roleFromDB.equals("admin")) {
                             Intent intent = new Intent(LoginActivity.this, adminActivity.class);
@@ -102,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("email", emailFromDB);
                             intent.putExtra("username", usernameFromDB);
                             intent.putExtra("password", passwordFromDB);
-                            intent = new Intent(LoginActivity.this, adminActivity.class);
+
                             startActivity(intent);
                         }
 

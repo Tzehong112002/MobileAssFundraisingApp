@@ -25,6 +25,8 @@ class profile : Fragment() {
     private lateinit var titleUsername: TextView
     private lateinit var editProfile: Button
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,9 +57,12 @@ class profile : Fragment() {
         val intent = activity?.intent
         val userUsername = intent?.getStringExtra("username")
 
+
         val reference: DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
         val checkUserDatabase: Query = reference.orderByChild("username").equalTo(userUsername)
+
         checkUserDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val nameFromDB = snapshot.child(userUsername.toString()).child("name").getValue(String::class.java)
@@ -92,11 +97,13 @@ class profile : Fragment() {
                     val usernameFromDB = snapshot.child(userUsername).child("username").getValue(String::class.java)
                     val passwordFromDB = snapshot.child(userUsername).child("password").getValue(String::class.java)
 
+
                     val bundle = Bundle()
                     bundle.putString("name", nameFromDB)
                     bundle.putString("email", emailFromDB)
                     bundle.putString("username", usernameFromDB)
                     bundle.putString("password", passwordFromDB)
+
 
                     val editProfileFragment = edit_profile()
                     editProfileFragment.arguments = bundle
