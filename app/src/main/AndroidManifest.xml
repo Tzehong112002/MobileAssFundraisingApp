@@ -17,6 +17,14 @@
         android:theme="@style/Theme.MobileAssFundraisingApp"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
             android:name=".admin.UpdateActivity"
             android:exported="false">
             <meta-data
@@ -46,8 +54,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
         <activity
             android:name=".SignupActivity"
             android:exported="true"
@@ -65,13 +71,6 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
