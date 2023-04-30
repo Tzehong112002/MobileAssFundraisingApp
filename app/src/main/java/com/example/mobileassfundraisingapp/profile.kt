@@ -65,6 +65,7 @@ class profile : Fragment() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+
                     val nameFromDB = snapshot.child(userUsername.toString()).child("name").getValue(String::class.java)
                     val emailFromDB = snapshot.child(userUsername.toString()).child("email").getValue(String::class.java)
                     val usernameFromDB = snapshot.child(userUsername.toString()).child("username").getValue(String::class.java)

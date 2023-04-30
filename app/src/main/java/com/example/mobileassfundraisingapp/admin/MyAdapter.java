@@ -2,18 +2,22 @@ package com.example.mobileassfundraisingapp.admin;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.example.mobileassfundraisingapp.EventDetailsUser;
 import com.example.mobileassfundraisingapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -38,16 +42,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
-                intent.putExtra("Description", dataList.get(holder.getAdapterPosition()).getDataDesc());
-                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
-                intent.putExtra("Key",dataList.get(holder.getAdapterPosition()).getKey());
-                intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getDataLang());
-                context.startActivity(intent);
+                String activityName = view.getContext().getClass().getSimpleName();
+
+                if (activityName.equals("adminActivity")) {
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
+                    intent.putExtra("Description", dataList.get(holder.getAdapterPosition()).getDataDesc());
+                    intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
+                    intent.putExtra("Key", dataList.get(holder.getAdapterPosition()).getKey());
+                    intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getDataLang());
+                    context.startActivity(intent);
+
+                } else{
+                    EventDetailsUser fragment = new EventDetailsUser();
+                    Bundle args = new Bundle();
+                    args.putString("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
+                    args.putString("Description", dataList.get(holder.getAdapterPosition()).getDataDesc());
+                    args.putString("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
+                    args.putString("Key", dataList.get(holder.getAdapterPosition()).getKey());
+                    args.putString("Language", dataList.get(holder.getAdapterPosition()).getDataLang());
+                    fragment.setArguments(args);
+
+                    FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragment_container, fragment)
+                            .addToBackStack(null)
+                            .commit();
+
+                }
             }
         });
     }
+
     @Override
     public int getItemCount() {
         return dataList.size();

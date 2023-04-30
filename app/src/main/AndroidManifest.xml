@@ -71,7 +71,8 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.MobileAssFundraisingApp.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
