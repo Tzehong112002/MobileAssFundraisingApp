@@ -13,21 +13,7 @@
         android:layout_height="60dp"
         android:src="@drawable/default_icon"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/user_name"
-        android:paddingTop="8dp"
-        android:textSize="20dp"
-        android:text="Tzehong"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="tzehong112002@gmail.com"/>
 
     <View
         android:layout_width="match_parent"

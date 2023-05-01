@@ -73,10 +73,13 @@ dependencies {
     //implementation 'com.paypal.sdk:paypal-android-sdk:2.19.7'
     implementation 'com.google.firebase:firebase-auth:19.3.2'
 
-
     //settings
-
     implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    //google map
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
 
 
 
