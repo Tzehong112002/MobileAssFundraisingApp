@@ -104,14 +104,16 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     replaceFragment(new HomeFragment(), username);
                     break;
-                case R.id.nav_message:
-                    Toast.makeText(getApplicationContext(), "Clicked Message", Toast.LENGTH_SHORT).show();
+                case R.id.nav_Event:
+                    replaceFragment(new searchFragment());
                     break;
-                case R.id.nav_sync:
-                    Toast.makeText(getApplicationContext(), "Clicked Sync", Toast.LENGTH_SHORT).show();
+                case R.id.nav_Profile:
+                    replaceFragment(new profile());
                     break;
                 case R.id.nav_trash:
-                    Toast.makeText(getApplicationContext(), "Clicked Trash", Toast.LENGTH_SHORT).show();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            //new Map()).commit();
+                    replaceFragment(new Map());
                     break;
                 case R.id.Settings:
                     //replaceFragment(new settingFragment());

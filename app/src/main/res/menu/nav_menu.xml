@@ -9,14 +9,14 @@
         android:title="Home"/>
 
     <item
-        android:id="@+id/nav_message"
-        android:icon="@drawable/ic_message"
-        android:title="message"/>
+        android:id="@+id/nav_Event"
+        android:icon="@drawable/ic_event"
+        android:title="Event"/>
 
     <item
-        android:id="@+id/nav_sync"
-        android:icon="@drawable/ic_sync"
-        android:title="Sync"/>
+        android:id="@+id/nav_Profile"
+        android:icon="@drawable/ic_person"
+        android:title="Profile"/>
 
     <item
         android:id="@+id/nav_trash"

@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update Data"
+                android:text="Update Event Details"
                 android:textSize="30sp"
                 android:textAlignment="center"
                 android:textColor="@color/lavender"/>
@@ -44,7 +44,7 @@
                 android:background="@drawable/lavender_border"
                 android:layout_marginTop="20dp"
                 android:padding="16dp"
-                android:hint="Enter topic name"
+                android:hint="Enter Event Name"
                 android:gravity="start|center_vertical"
                 android:textColor="@color/lavender"/>
             <EditText
@@ -54,7 +54,7 @@
                 android:background="@drawable/lavender_border"
                 android:layout_marginTop="20dp"
                 android:padding="16dp"
-                android:hint="Enter description"
+                android:hint="Enter Event description"
                 android:gravity="start|center_vertical"
                 android:textColor="@color/lavender"/>
             <EditText
@@ -64,7 +64,7 @@
                 android:background="@drawable/lavender_border"
                 android:layout_marginTop="20dp"
                 android:padding="16dp"
-                android:hint="Enter language"
+                android:hint="Enter Event Categories"
                 android:gravity="start|center_vertical"
                 android:textColor="@color/lavender"/>
             <Button
