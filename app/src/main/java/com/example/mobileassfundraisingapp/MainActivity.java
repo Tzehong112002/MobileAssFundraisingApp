@@ -105,18 +105,18 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragment(), username);
                     break;
                 case R.id.nav_Event:
-                    replaceFragment(new searchFragment());
+                    replaceFragment(new searchFragment(), username);
                     break;
                 case R.id.nav_Profile:
-                    replaceFragment(new profile());
+                    replaceFragment(new profile(), username);
                     break;
                 case R.id.nav_maps:
                     //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             //new Map()).commit();
-                    replaceFragment(new MapsFragment());
+                    replaceFragment(new MapsFragment(), username);
                     break;
                 case R.id.Settings:
-                    //replaceFragment(new settingFragment());
+                    replaceFragment(new settingFragment(), username);
                     break;
                 case R.id.nav_logout:
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
