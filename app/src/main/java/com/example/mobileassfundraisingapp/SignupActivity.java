@@ -41,10 +41,16 @@ public class SignupActivity extends AppCompatActivity {
                 reference = database.getReference("users");
 
                 // Get input values from user
-                String name = signupName.getText().toString();
-                String email = signupEmail.getText().toString();
-                String username = signupUsername.getText().toString();
-                String password = signupPassword.getText().toString();
+                String name = signupName.getText().toString().trim();
+                String email = signupEmail.getText().toString().trim();
+                String username = signupUsername.getText().toString().trim();
+                String password = signupPassword.getText().toString().trim();
+
+                // Check if any input fields are empty
+                if (name.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(SignupActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Create helper class object with input values and default role "user"
                 HelperClass helperClass = new HelperClass(name, email, username, password, "user");
@@ -58,6 +64,7 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         // Set up click listener for redirecting to login screen
         loginRedirectText.setOnClickListener(new View.OnClickListener() {

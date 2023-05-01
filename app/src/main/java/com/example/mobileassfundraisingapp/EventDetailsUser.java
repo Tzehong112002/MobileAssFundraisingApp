@@ -50,7 +50,9 @@ public class EventDetailsUser extends Fragment {
         donateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String username = getActivity().getIntent().getStringExtra("username");
                 Intent intent = new Intent(getActivity(), PaymentActivity.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });

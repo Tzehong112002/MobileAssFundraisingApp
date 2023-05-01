@@ -20,7 +20,7 @@ class PaymentActivity : AppCompatActivity() {
     private lateinit var donationAmountEditText: EditText
     private lateinit var donateButton: Button
 
-    private lateinit var userId: String
+    private lateinit var username: String
     private lateinit var eventId: String
     private lateinit var database: FirebaseDatabase
 
@@ -29,7 +29,8 @@ class PaymentActivity : AppCompatActivity() {
         setContentView(R.layout.payment)
 
         // Retrieve userId and eventId from the previous activity
-        userId = intent.getStringExtra("userId") ?: ""
+        username = intent?.getStringExtra("username") ?: ""
+
         eventId = intent.getStringExtra("eventId") ?: ""
 
         // Initialize Firebase Realtime Database
@@ -64,7 +65,7 @@ class PaymentActivity : AppCompatActivity() {
 
             // Create a payment object
             val payment = hashMapOf(
-                "userId" to userId,
+                "username" to username,
                 "eventId" to eventId,
                 "cardNumber" to cardNumber,
                 "expiry" to expiry,

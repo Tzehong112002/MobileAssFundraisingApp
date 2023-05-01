@@ -2,6 +2,8 @@ package com.example.mobileassfundraisingapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,9 +36,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!validateUsername() | !validatePassword()) {
+                    Intent intent = new Intent(LoginActivity.this, PaymentActivity.class);
+                    intent.putExtra("username", loginUsername.getText().toString());
                 } else {
                     checkUser();
                 }
+
             }
         });
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
@@ -123,5 +128,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
