@@ -17,9 +17,9 @@
         android:title="Profile"
         android:icon="@drawable/ic_person" />
 
-    <item android:id="@+id/miSettings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings" />
+    <item android:id="@+id/miHistory"
+        android:title="History"
+        android:icon="@drawable/ic_baseline_history_24" />
 
 
 

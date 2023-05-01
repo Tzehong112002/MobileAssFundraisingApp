@@ -55,7 +55,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //drawer
-    implementation'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     //Material Design
     implementation 'com.google.android.material:material:1.3.0-alpha03'
 
@@ -72,6 +72,13 @@ dependencies {
 
     //implementation 'com.paypal.sdk:paypal-android-sdk:2.19.7'
     implementation 'com.google.firebase:firebase-auth:19.3.2'
+
+
+    //settings
+
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+
 
 
 
