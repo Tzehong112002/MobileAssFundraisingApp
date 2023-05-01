@@ -100,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_Profile:
                     replaceFragment(new profile());
                     break;
-                case R.id.nav_trash:
+                case R.id.nav_maps:
                     //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             //new Map()).commit();
-                    replaceFragment(new Map());
+                    replaceFragment(new MapsFragment());
                     break;
                 case R.id.Settings:
                     replaceFragment(new settingFragment());

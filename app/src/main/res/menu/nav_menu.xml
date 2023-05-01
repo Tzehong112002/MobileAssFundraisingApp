@@ -19,9 +19,9 @@
         android:title="Profile"/>
 
     <item
-        android:id="@+id/nav_trash"
-        android:icon="@drawable/ic_delete"
-        android:title="Trash"/>
+        android:id="@+id/nav_maps"
+        android:icon="@drawable/ic_map"
+        android:title="Maps"/>
 
     <item
         android:id="@+id/Settings"
