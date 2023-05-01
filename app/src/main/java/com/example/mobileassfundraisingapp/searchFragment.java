@@ -48,7 +48,7 @@ public class searchFragment extends Fragment {
         dataList = new ArrayList<>();
         adapter = new MyAdapter(getActivity(), dataList);
         recyclerView.setAdapter(adapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Event");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);

@@ -53,7 +53,7 @@ public class adminActivity extends AppCompatActivity {
         dataList = new ArrayList<>();
         adapter = new MyAdapter(adminActivity.this, dataList);
         recyclerView.setAdapter(adapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Event");
         dialog.show();
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

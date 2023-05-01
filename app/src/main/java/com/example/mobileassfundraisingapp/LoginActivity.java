@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.mobileassfundraisingapp.admin.adminActivity;
+import com.example.mobileassfundraisingapp.admin.mainPageAdmin;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -99,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         } else if (roleFromDB.equals("admin")) {
-                            Intent intent = new Intent(LoginActivity.this, adminActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, mainPageAdmin.class);
                             intent.putExtra("name", nameFromDB);
                             intent.putExtra("email", emailFromDB);
                             intent.putExtra("username", usernameFromDB);
