@@ -12,8 +12,10 @@
     <color name="grey">#ff424242</color>
     <color name="red">#c70000</color>
     <color name="green">#00ff00</color>
+    <color name="gray">#c5c5c5</color>
     <color name="grey2">#aaa</color>
     <color name="darkGrey">#ff424242</color>
+    <color name="blue">#0000FF</color>
 
     <color name="primary_color_dark">#ff424242</color>
     <color name="primary_dark_color_dark">#ff424242</color>
