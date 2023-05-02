@@ -171,7 +171,7 @@ class AdminUpdate : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference("users")
 
-        database.child(uid).removeValue().addOnSuccessListener {
+        database.child(username).removeValue().addOnSuccessListener {
             binding.editAdminName.text.clear()
             binding.editAdminEmail.text.clear()
             binding.editAdminPhone.text.clear()
