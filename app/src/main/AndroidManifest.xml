@@ -85,6 +85,32 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".admin.AdminList"
+            android:exported="false"
+            android:parentActivityName=".admin.mainPageAdmin">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".admin.RegisterAdmin"
+            android:exported="false"
+            android:parentActivityName=".admin.AdminList">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".admin.AdminUpdate"
+            android:exported="false"
+            android:parentActivityName=".admin.AdminList">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <activity
             android:name=".SignupActivity"
             android:exported="true"
@@ -109,6 +135,10 @@
                 android:value="" />
         </activity>
         <activity android:name=".PaymentActivity" />
+
+
+
+
     </application>
 
 </manifest>

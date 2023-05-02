@@ -35,7 +35,7 @@ public class mainPageAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create a new intent to start the LoginActivity
-                Intent intent = new Intent(mainPageAdmin.this, adminActivity.class);
+                Intent intent = new Intent(mainPageAdmin.this, AdminList.class);
                 startActivity(intent);
             }
         });
