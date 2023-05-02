@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set up listener for FAB click
-        binding.fab.setOnClickListener(view -> replaceFragment(new AddFragment(), username));
+        //binding.fab.setOnClickListener(view -> replaceFragment(new AddFragment(), username));
 
         //drawer //
         //DrawerLayout drawerLayout = binding.drawerLayout;

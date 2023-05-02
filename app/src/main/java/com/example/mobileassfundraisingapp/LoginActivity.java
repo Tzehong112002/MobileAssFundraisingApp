@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        loginPassword.setError("Invalid Credentials");
+                        loginPassword.setError("Invalid Account");
                         loginPassword.requestFocus();
                     }
                 } else {
