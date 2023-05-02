@@ -53,13 +53,40 @@ public class SignupActivity extends AppCompatActivity {
                 String password = signupPassword.getText().toString().trim();
                 String cfmPassword = confirmPassword.getText().toString().trim();
 
+
+                // Check if any input fields are empty
                 // Check if any input fields are empty
                 if (name.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty() || cfmPassword.isEmpty()) {
-                    signupUsername.setError(null);
-                    signupEmail.setError(null);
+                    // Set error messages for empty fields
+                    if (name.isEmpty()) {
+                        signupName.setError("Name is required");
+                    } else {
+                        signupName.setError(null);
+                    }
+                    if (email.isEmpty()) {
+                        signupEmail.setError("Email is required");
+                    } else {
+                        signupEmail.setError(null);
+                    }
+                    if (username.isEmpty()) {
+                        signupUsername.setError("Username is required");
+                    } else {
+                        signupUsername.setError(null);
+                    }
+                    if (password.isEmpty()) {
+                        signupPassword.setError("Password is required");
+                    } else {
+                        signupPassword.setError(null);
+                    }
+                    if (cfmPassword.isEmpty()) {
+                        confirmPassword.setError("Please confirm password");
+                    } else {
+                        confirmPassword.setError(null);
+                    }
                     Toast.makeText(SignupActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
 
                 // Check if password and confirm password match
                 if (!password.equals(cfmPassword)) {
