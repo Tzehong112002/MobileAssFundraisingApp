@@ -60,6 +60,20 @@
 
 
             <!--            Name-->
+            <EditText
+                android:id="@+id/editUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTil"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/nameshape"
+                android:drawablePadding="10dp"
+                android:hint=" Username"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameTil"
                 android:layout_width="match_parent"
@@ -86,7 +100,7 @@
                 android:id="@+id/contactTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nameTil"
+                android:layout_below="@id/editUsername"
                 android:layout_marginTop="5dp"
                 app:hintEnabled="false">
 

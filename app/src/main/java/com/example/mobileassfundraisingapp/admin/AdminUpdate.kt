@@ -131,7 +131,7 @@ class AdminUpdate : AppCompatActivity() {
             storageReference.delete()
             storageReference.putFile(ImageUri!!)
         }
-        database.child(uid).updateChildren(user).addOnSuccessListener {
+        database.child(username).updateChildren(user).addOnSuccessListener {
             binding.editAdminName.text.clear()
             binding.editAdminEmail.text.clear()
             binding.editAdminPhone.text.clear()

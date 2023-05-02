@@ -211,7 +211,7 @@ class RegisterAdmin : AppCompatActivity() {
         val timestamp = System.currentTimeMillis()
 
         // Get current user uid
-        val uid = firebaseAuth.uid
+        val uid = binding.editUsername.text.toString().trim()
 
         // Setup data to add in db
         val hashMap: HashMap<String, Any?> = HashMap()
@@ -229,7 +229,7 @@ class RegisterAdmin : AppCompatActivity() {
 
         // Set data to db
         val ref = FirebaseDatabase.getInstance().getReference("users") //change the table name of here
-        ref.child(uid!!)
+        ref.child(uid)
             .setValue(hashMap)
             .addOnSuccessListener {
                 // user info saved
