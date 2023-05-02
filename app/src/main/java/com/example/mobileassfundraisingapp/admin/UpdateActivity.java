@@ -88,13 +88,41 @@ public class UpdateActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (uri == null) {
+                    Toast.makeText(UpdateActivity.this, "Please select an image", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 saveData();
                 Intent intent = new Intent(UpdateActivity.this, adminActivity.class);
                 startActivity(intent);
             }
         });
+
     }
-    public void saveData(){
+    public void saveData() {
+        if (uri == null) {
+            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (updateTitle.getText().toString().trim().isEmpty()) {
+            updateTitle.setError("Title is required");
+            updateTitle.requestFocus();
+            return;
+        }
+
+        if (updateDesc.getText().toString().trim().isEmpty()) {
+            updateDesc.setError("Description is required");
+            updateDesc.requestFocus();
+            return;
+        }
+
+        if (updateLang.getText().toString().trim().isEmpty()) {
+            updateLang.setError("Language is required");
+            updateLang.requestFocus();
+            return;
+        }
+
         storageReference = FirebaseStorage.getInstance().getReference().child("Android Images").child(uri.getLastPathSegment());
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateActivity.this);
         builder.setCancelable(false);
@@ -118,6 +146,10 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
     public void updateData(){
         title = updateTitle.getText().toString().trim();
         desc = updateDesc.getText().toString().trim();
