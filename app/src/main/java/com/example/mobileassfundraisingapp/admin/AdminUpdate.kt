@@ -109,9 +109,9 @@ class AdminUpdate : AppCompatActivity() {
         }
 
 
-        binding.btnBack.setOnClickListener {
-            finish()
-        }
+        //binding.btnBack.setOnClickListener {
+        //    finish()
+        //}
 
     }
 

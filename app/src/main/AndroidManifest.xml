@@ -89,6 +89,7 @@
         <activity
             android:name=".admin.AdminList"
             android:exported="false"
+            android:label="Admin List"
             android:parentActivityName=".admin.mainPageAdmin">
             <meta-data
                 android:name="android.app.lib_name"
@@ -97,7 +98,8 @@
         <activity
             android:name=".admin.RegisterAdmin"
             android:exported="false"
-            android:parentActivityName=".admin.AdminList">
+            android:parentActivityName=".admin.AdminList"
+            android:label="Register Admin">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -105,7 +107,8 @@
         <activity
             android:name=".admin.AdminUpdate"
             android:exported="false"
-            android:parentActivityName=".admin.AdminList">
+            android:parentActivityName=".admin.AdminList"
+            android:label="Update Admin">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

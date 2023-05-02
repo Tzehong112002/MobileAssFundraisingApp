@@ -6,36 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".admin.AdminList">
 
-    <!--    Toolbar-->
-    <RelativeLayout
-        android:id="@+id/toolbarRl"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/purple_200">
 
-        <TextView
-            android:id="@+id/adminTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Admin List"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/arrow"
-            android:layout_alignParentStart="true"
-            android:background="@android:color/transparent"/>
-
-    </RelativeLayout>
 
     <Button
         android:id="@+id/addUserBtn"
@@ -54,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/addUserBtn"
-        android:layout_below="@id/toolbarRl"
+
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         tools:listitem="@layout/activity_admin_record_layout" />

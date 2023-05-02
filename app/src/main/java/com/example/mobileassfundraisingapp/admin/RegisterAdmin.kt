@@ -56,9 +56,9 @@ class RegisterAdmin : AppCompatActivity() {
         progressDialog.setCanceledOnTouchOutside(false)
 
 
-        binding.backBtn.setOnClickListener {
-            finish()
-        }
+//        binding.backBtn.setOnClickListener {
+//            finish()
+//        }
 
 
 
