@@ -22,10 +22,11 @@ class AdminList : AppCompatActivity() {
     // binding
     private lateinit var binding: ActivityAdminListBinding
 
-    // Recycler View
+
+    private lateinit var uAList: ArrayList<admin>
     private lateinit var dbref : DatabaseReference
     private lateinit var uRView: RecyclerView
-    private lateinit var uAList: ArrayList<admin>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

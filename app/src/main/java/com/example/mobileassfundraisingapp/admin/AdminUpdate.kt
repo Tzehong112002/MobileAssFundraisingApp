@@ -25,7 +25,7 @@ class AdminUpdate : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminUpdateBinding
     private lateinit var database: DatabaseReference
-    private lateinit var progressDialog: ProgressDialog
+    private lateinit var Dialog: ProgressDialog
     private lateinit var username: String
     private lateinit var fileID: String
     private var ImageUri : Uri? = null
@@ -38,25 +38,14 @@ class AdminUpdate : AppCompatActivity() {
         binding = ActivityAdminUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please wait")
-        progressDialog.setCanceledOnTouchOutside(false)
-
         val nameAdmin: TextView = binding.editAdminName
         val emailAdmin: TextView = binding.editAdminEmail
         val phoneAdmin: TextView = binding.editAdminPhone
 
         val bundle: Bundle? = intent.extras
-
         username = intent.getStringExtra("username").toString()
-        binding.editImage.setOnClickListener{
 
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_GET_CONTENT
 
-            startActivityForResult(intent, 100)
-        }
         database = FirebaseDatabase.getInstance().getReference("users")
         database.child(username).get().addOnSuccessListener {
             val retrieved = it.value as Map<String, String>
@@ -71,6 +60,16 @@ class AdminUpdate : AppCompatActivity() {
                 binding.editImage.setImageURI(localFile.toUri())
             }
         }
+
+        binding.editImage.setOnClickListener{
+
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+
+            startActivityForResult(intent, 100)
+        }
+
         binding.textView2.visibility = View.GONE
 
         binding.btnUpdate.setOnClickListener {
@@ -109,9 +108,10 @@ class AdminUpdate : AppCompatActivity() {
         }
 
 
-        //binding.btnBack.setOnClickListener {
-        //    finish()
-        //}
+
+        Dialog = ProgressDialog(this)
+        Dialog.setTitle("Please wait")
+        Dialog.setCanceledOnTouchOutside(false)
 
     }
 
@@ -123,8 +123,8 @@ class AdminUpdate : AppCompatActivity() {
             "email" to email,
             "phone" to phone,
         )
-        progressDialog.setMessage("Updating Users...")
-        progressDialog.show()
+        Dialog.setMessage("Updating Users...")
+        Dialog.show()
         if (ImageUri != null){
             val storageReference = FirebaseStorage.getInstance().getReference("images/$fileID")
 
@@ -135,11 +135,11 @@ class AdminUpdate : AppCompatActivity() {
             binding.editAdminName.text.clear()
             binding.editAdminEmail.text.clear()
             binding.editAdminPhone.text.clear()
-            progressDialog.dismiss()
+            Dialog.dismiss()
             finish()
             Toast.makeText(this, "Successfully Update", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
-            progressDialog.dismiss()
+            Dialog.dismiss()
             Toast.makeText(this, "Failed to update", Toast.LENGTH_SHORT).show()
         }
 
@@ -175,11 +175,11 @@ class AdminUpdate : AppCompatActivity() {
             binding.editAdminName.text.clear()
             binding.editAdminEmail.text.clear()
             binding.editAdminPhone.text.clear()
-            progressDialog.dismiss()
+            Dialog.dismiss()
             finish()
             Toast.makeText(this, "Successfully Delete", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
-            progressDialog.dismiss()
+            Dialog.dismiss()
             Toast.makeText(this, "Failed to Delete", Toast.LENGTH_SHORT).show()
         }
     }

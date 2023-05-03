@@ -30,7 +30,7 @@ private lateinit var photoFile: File
 class RegisterAdmin : AppCompatActivity() {
 
     private lateinit var  binding: ActivityAdminRegisterBinding
-    private lateinit var progressDialog: ProgressDialog
+    private lateinit var Dialog: ProgressDialog
     private lateinit var firebaseAuth: FirebaseAuth
 
 
@@ -51,14 +51,9 @@ class RegisterAdmin : AppCompatActivity() {
 
 
         firebaseAuth = FirebaseAuth.getInstance()
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please wait")
-        progressDialog.setCanceledOnTouchOutside(false)
-
-
-//        binding.backBtn.setOnClickListener {
-//            finish()
-//        }
+        Dialog = ProgressDialog(this)
+        Dialog.setTitle("Please wait")
+        Dialog.setCanceledOnTouchOutside(false)
 
 
 
@@ -72,8 +67,6 @@ class RegisterAdmin : AppCompatActivity() {
 
 
         binding.btnTakePicture.setOnClickListener {
-            //erm i need to refigure because kotlin seem change much
-            //you no rebuild so it error
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             photoFile = getPhotoFile(FILE_NAME)
             try{
@@ -136,37 +129,37 @@ class RegisterAdmin : AppCompatActivity() {
 
         val cPassword = binding.cPasswordEt.text.toString().trim()
 
-        // Step 2: Validate data
+        //Validate data
         if(name.isEmpty()){
-            // Empty name
+
             Toast.makeText(this, "Enter your username...", Toast.LENGTH_SHORT).show()
         }
         else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            // Invalid email address pattern
+
             Toast.makeText(this, "Invalid email pattern...", Toast.LENGTH_SHORT).show()
         }
         else if(password.isEmpty()){
-            // Empty password
+
             Toast.makeText(this, "Enter your password...", Toast.LENGTH_SHORT).show()
         }
         else if(cPassword.isEmpty()){
-            // Empty confirm password
+
             Toast.makeText(this, "Enter confirm password...", Toast.LENGTH_SHORT).show()
         }
         else if(password != cPassword){
-            // Password mismatch
+
             Toast.makeText(this, "Password not match...", Toast.LENGTH_SHORT).show()
         }
-//        else if(binding.imageView.getDrawable() == null){
-//            // No image taken
-//            Toast.makeText(this, "Capture an image...", Toast.LENGTH_SHORT).show()
-//        }
+        else if(binding.imageView.getDrawable() == null){
+
+            Toast.makeText(this, "Capture an image...", Toast.LENGTH_SHORT).show()
+        }
         else if(contactNo.isEmpty()){
-            // Empty contact no
+
             Toast.makeText(this, "Enter contact number...", Toast.LENGTH_SHORT).show()
         }
         else if(!contactNo.matches(".*[0-9].*".toRegex())){
-            // Contact no must be number
+
             Toast.makeText(this, "Number only for contact number..", Toast.LENGTH_SHORT).show()
         }
         else if(contactNo.length > 11) {
@@ -176,44 +169,38 @@ class RegisterAdmin : AppCompatActivity() {
             Toast.makeText(this, "Invalid contact no...", Toast.LENGTH_SHORT).show()
         }
         else{
-            createUserAccount()
+            createAccount()
         }
     }
 
-    private fun createUserAccount() {
-        // Step 3: Create account - Firebase auth
+    private fun createAccount() {
 
-        // Show progress
-        progressDialog.setMessage("Creating Account...")
-        progressDialog.show()
+        Dialog.setMessage("Creating Account")
+        Dialog.show()
 
-        // Create user in firebase
+
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                // Account created
-                // Add user data to db
-                updateUserInfo()
+
+                updateInfo()
 
             }
             .addOnFailureListener {
-                // Account fail to create
-                progressDialog.dismiss()
-                //can take picture for me the error message the screen too blur haha
-                Toast.makeText(this, "Fail to create due to ${it.message}", Toast.LENGTH_SHORT).show()
+                Dialog.dismiss()
+                Toast.makeText(this, "Fail to create because ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
-    private fun updateUserInfo() {
-        // Step 4: Save user info - Firebase Realtime Database
-        progressDialog.setMessage("Saving user info...")
+    private fun updateInfo() {
+        Dialog.setMessage("Saving info")
 
-        // Timestamp
+
         val timestamp = System.currentTimeMillis()
 
-        // Get current user uid
+
         val uid = binding.editUsername.text.toString().trim()
 
-        // Setup data to add in db
+
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["username"] = uid
         hashMap["email"] = email
@@ -221,7 +208,7 @@ class RegisterAdmin : AppCompatActivity() {
         hashMap["phone"] = contactNo
         hashMap["password"] = password
         hashMap["profilePic"] = FILE_NAME
-        hashMap["role"] = "admin" //data -> user/admin
+        hashMap["role"] = "admin"
 
 
 
@@ -232,20 +219,12 @@ class RegisterAdmin : AppCompatActivity() {
         ref.child(uid)
             .setValue(hashMap)
             .addOnSuccessListener {
-                // user info saved
-                progressDialog.dismiss()
+                Dialog.dismiss()
                 Toast.makeText(this, "Account created successfully ", Toast.LENGTH_SHORT).show()
-//                val intent = Intent(this@RegisterActivity, SuccessScanActivity::class.java)
-//                intent.putExtra("imguri", ImageUri)
-//                startActivity(intent)
-                //ok worked
-                //ok i try on my phone see
-                //ok
                 startActivity(Intent(this@RegisterAdmin, RegisterAdmin::class.java))
             }
             .addOnFailureListener {
-                // Fail to add data to db
-                progressDialog.dismiss()
+                Dialog.dismiss()
                 Toast.makeText(this, "Fail to save the info  ${it.message}", Toast.LENGTH_SHORT).show()
             }
 
