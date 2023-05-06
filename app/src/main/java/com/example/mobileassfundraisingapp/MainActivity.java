@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new MapsFragment(), username);
                     break;
                 case R.id.Settings:
-                    replaceFragment(new settingFragment(), username);
+                    //replaceFragment(new settingFragment(), username);
                     break;
                 case R.id.nav_logout:
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);

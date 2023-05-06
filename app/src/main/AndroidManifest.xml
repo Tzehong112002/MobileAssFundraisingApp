@@ -113,6 +113,25 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".admin.DonorList"
+            android:exported="false"
+            android:parentActivityName=".admin.mainPageAdmin"
+            android:label="Donor List">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".admin.PaymentDetails"
+            android:exported="false"
+            android:parentActivityName=".admin.DonorList"
+            android:label="Payment Details">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".SignupActivity"
