@@ -100,19 +100,6 @@ class RegisterAdmin : AppCompatActivity() {
         }
     }
 
-    fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
-        val bytes = ByteArrayOutputStream()
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val path = MediaStore.Images.Media.insertImage(
-            inContext.getContentResolver(),
-            inImage,
-            "Title",
-            null
-        )
-        return Uri.parse(path)
-    }
-
-
 
 
     private var name = ""
@@ -132,41 +119,41 @@ class RegisterAdmin : AppCompatActivity() {
         //Validate data
         if(name.isEmpty()){
 
-            Toast.makeText(this, "Enter your username...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please Enter the username", Toast.LENGTH_SHORT).show()
         }
         else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
 
-            Toast.makeText(this, "Invalid email pattern...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter the correct email pattern", Toast.LENGTH_SHORT).show()
         }
         else if(password.isEmpty()){
 
-            Toast.makeText(this, "Enter your password...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show()
         }
         else if(cPassword.isEmpty()){
 
-            Toast.makeText(this, "Enter confirm password...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter confirm password", Toast.LENGTH_SHORT).show()
         }
         else if(password != cPassword){
 
-            Toast.makeText(this, "Password not match...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Password not match", Toast.LENGTH_SHORT).show()
         }
         else if(binding.imageView.getDrawable() == null){
 
-            Toast.makeText(this, "Capture an image...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Capturing an image", Toast.LENGTH_SHORT).show()
         }
         else if(contactNo.isEmpty()){
 
-            Toast.makeText(this, "Enter contact number...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter contact number", Toast.LENGTH_SHORT).show()
         }
         else if(!contactNo.matches(".*[0-9].*".toRegex())){
 
-            Toast.makeText(this, "Number only for contact number..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter number only ", Toast.LENGTH_SHORT).show()
         }
         else if(contactNo.length > 11) {
-            Toast.makeText(this, "Contact no must not be exceed...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Contact no no more than 11 digit", Toast.LENGTH_SHORT).show()
         }
         else if(contactNo.length < 10){
-            Toast.makeText(this, "Invalid contact no...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Invalid contact no", Toast.LENGTH_SHORT).show()
         }
         else{
             createAccount()
@@ -228,6 +215,18 @@ class RegisterAdmin : AppCompatActivity() {
                 Toast.makeText(this, "Fail to save the info  ${it.message}", Toast.LENGTH_SHORT).show()
             }
 
+    }
+
+    fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = MediaStore.Images.Media.insertImage(
+            inContext.getContentResolver(),
+            inImage,
+            "Title",
+            null
+        )
+        return Uri.parse(path)
     }
 
     private fun selectImage() {
