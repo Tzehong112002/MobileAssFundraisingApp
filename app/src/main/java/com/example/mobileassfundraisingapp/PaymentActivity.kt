@@ -1,15 +1,20 @@
 package com.example.mobileassfundraisingapp;
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
+import com.example.mobileassfundraisingapp.admin.DonorList
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 class PaymentActivity : AppCompatActivity() {
 
@@ -19,6 +24,7 @@ class PaymentActivity : AppCompatActivity() {
     private lateinit var nameOnCardEditText: EditText
     private lateinit var donationAmountEditText: EditText
     private lateinit var donateButton: Button
+    private lateinit var cancelButton: Button
 
     private lateinit var username: String
     private lateinit var eventId: String
@@ -43,6 +49,7 @@ class PaymentActivity : AppCompatActivity() {
         nameOnCardEditText = findViewById(R.id.editText_nameOnCard)
         donationAmountEditText = findViewById(R.id.editText_donationAmount)
         donateButton = findViewById(R.id.button_donate)
+        cancelButton = findViewById(R.id.button_cancel)
 
         // Set click listener for the donate button
         donateButton.setOnClickListener {
@@ -54,8 +61,28 @@ class PaymentActivity : AppCompatActivity() {
             val donationAmount = donationAmountEditText.text.toString()
 
             // Validate input values
-            if (cardNumber.isEmpty() || expiry.isEmpty() || cvc.isEmpty() || nameOnCard.isEmpty() || donationAmount.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            if (cardNumber.isEmpty() || cardNumber.length != 16 || !cardNumber.isDigitsOnly()) {
+                cardNumberEditText.error = "Please enter a valid 16-digit card number"
+                return@setOnClickListener
+            }
+
+            if (expiry.isEmpty() || !expiry.matches(Regex("^\\d{2}/\\d{2}$"))) {
+                expiryEditText.error = "Please enter a valid expiry date in MM/YY format"
+                return@setOnClickListener
+            }
+
+            if (cvc.isEmpty() || cvc.length != 3 || !cvc.isDigitsOnly()) {
+                cvcEditText.error = "Please enter a valid 3-digit CVC number"
+                return@setOnClickListener
+            }
+
+            if (nameOnCard.isEmpty()) {
+                nameOnCardEditText.error = "Please enter a name on the card"
+                return@setOnClickListener
+            }
+
+            if (donationAmount.isEmpty() || donationAmount.toDoubleOrNull() == null) {
+                donationAmountEditText.error = "Please enter a valid donation amount"
                 return@setOnClickListener
             }
 
@@ -87,6 +114,19 @@ class PaymentActivity : AppCompatActivity() {
                     Toast.makeText(this, "Payment failed", Toast.LENGTH_SHORT).show()
                 }
         }
+
+
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("username", username)
+            intent.putExtra("eventId", eventId)
+            intent.putExtra("fragment", "event_details_user")
+            startActivity(intent)
+        }
+
+
+
+
     }
 
     companion object {

@@ -157,6 +157,8 @@
                 android:value="" />
         </activity>
         <activity android:name=".PaymentActivity" />
+        <activity android:name=".EventDetailsUser"/>
+
 
 
 

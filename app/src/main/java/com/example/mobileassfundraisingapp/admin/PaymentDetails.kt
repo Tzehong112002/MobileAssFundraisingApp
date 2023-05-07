@@ -57,7 +57,7 @@ class PaymentDetails : AppCompatActivity() {
                     mCardNumber.setText(payment?.cardNumber)
                     mDonationAmount.setText(payment?.donationAmount.toString())
                     mUsername.setText(payment?.username)
-                    mEventId.setText(payment?.eventId)
+                    mEventId.text = payment?.eventId ?: ""
                     mTimestamp.text = payment?.timestamp.toString()
                     mCvc = payment?.cvc ?: ""
                     mExpiry = payment?.expiry ?: ""
@@ -77,15 +77,48 @@ class PaymentDetails : AppCompatActivity() {
             })
 
         mSaveButton.setOnClickListener {
-            savePayment()
+            if (validateInputs()) {
+                savePayment()
+            }
         }
-
 
         // Check for null values
         if (mNameOnCard == null || mCardNumber == null || mDonationAmount == null || mUsername == null || mEventId == null || mSaveButton == null) {
             throw IllegalStateException("One or more views are null")
         }
+
+
     }
+
+    private fun validateInputs(): Boolean {
+        val nameOnCard = mNameOnCard.text.toString().trim()
+        val cardNumber = mCardNumber.text.toString().trim()
+        val donationAmount = mDonationAmount.text.toString().trim()
+        val username = mUsername.text.toString().trim()
+
+        if (nameOnCard.isEmpty()) {
+            mNameOnCard.error = "Name on card is required"
+            return false
+        }
+
+        if (cardNumber.isEmpty()) {
+            mCardNumber.error = "Card number is required"
+            return false
+        }
+
+        if (donationAmount.isEmpty()) {
+            mDonationAmount.error = "Donation amount is required"
+            return false
+        }
+
+        if (username.isEmpty()) {
+            mUsername.error = "Username is required"
+            return false
+        }
+
+        return true
+    }
+
 
     private fun savePayment() {
         val nameOnCard = mNameOnCard.text.toString()
