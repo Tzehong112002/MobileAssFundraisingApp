@@ -40,7 +40,7 @@ class PaymentHistoryFragment : Fragment() {
         mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         mRecyclerView.adapter = mAdapter
 
-
+   
         // Retrieve payment history for the current user
         val query = mDatabase.orderByChild("username").equalTo(username)
         query.addListenerForSingleValueEvent(object : ValueEventListener {

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.PaymentDetails">
+
+    <TextView
+        android:id="@+id/label_name_on_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Name on Card"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/name_on_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_name_on_card"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter name on card"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/label_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_on_card"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Card Number"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_card_number"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter card number"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/label_donation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_number"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Donation Amount"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/donation_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_donation"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter donated amount"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/label_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/donation_amount"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Time Donated"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_date"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/label_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timestamp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Username"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_username"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter username"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/label_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Event ID"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/event_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_event"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_edit_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_event"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Save payment"
+        android:textColor="@android:color/white"
+        android:background="@color/teal_200" />
+
+    <Button
+        android:id="@+id/btn_delete_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_edit_payment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Delete payment"
+        android:textColor="@android:color/white"
+        android:background="@color/red" />
+
+</RelativeLayout>
+
+
+
